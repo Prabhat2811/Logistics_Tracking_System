@@ -10,6 +10,8 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jsp.tracking.dto.PaymentMethod;
 import jsp.tracking.dto.PaymentStatus;
 import lombok.Getter;
@@ -29,4 +31,8 @@ public class Payment {
 	private PaymentStatus paymentStatus;
 	@CreationTimestamp
 	private LocalDateTime paymentDateTime;
+	
+	 @OneToOne
+	 @JoinColumn(name = "shipment_id")
+	 private Shipment shipment;
 }

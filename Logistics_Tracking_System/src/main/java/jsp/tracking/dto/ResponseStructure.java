@@ -8,7 +8,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ResponseStructure <T>{
-	private HttpStatus statusCode;
+	private Integer statusCode;
 	private String message;
 	private T data;
 }

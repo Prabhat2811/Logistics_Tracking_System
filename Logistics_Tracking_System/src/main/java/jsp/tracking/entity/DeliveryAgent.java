@@ -1,7 +1,14 @@
 package jsp.tracking.entity;
 
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,6 +16,8 @@ import lombok.Setter;
 @Getter
 @Setter
 public class DeliveryAgent {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String name;
 	@Column(unique = true)
@@ -17,4 +26,7 @@ public class DeliveryAgent {
 	private String vehicleNumber;
 	private Boolean availabilityStatus;
 	private Double rating;
+	
+	  @OneToMany(mappedBy = "deliveryAgent", cascade = CascadeType.ALL)
+	  private List<Shipment> shipments;
 }

@@ -6,6 +6,8 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jsp.tracking.dto.Status;
 import lombok.Getter;
 import lombok.Setter;
@@ -21,4 +23,8 @@ public class TrackingHistory {
 	private String remark;
 	@Enumerated(EnumType.STRING)
 	private Status status;
+	
+	 @ManyToOne
+	 @JoinColumn(name = "shipment_id")
+	 private Shipment shipment;
 }
