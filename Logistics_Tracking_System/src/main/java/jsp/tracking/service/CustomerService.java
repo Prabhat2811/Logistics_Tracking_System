@@ -79,8 +79,12 @@ public class CustomerService {
 	public @Nullable ResponseStructure<Customer> updateCustomer(CustomerDto customerDto) {
 		ResponseStructure<Customer> res=new ResponseStructure<>();
 		Customer customer=customerRepository.findById(customerDto.getId()).orElseThrow(()-> new IdNotFoundException("Id Does Not Exist"));
+		
+		if(customerRepository.existsByEmail(customerDto.getEmail())) throw new RuleViolationException("Email Already Registered");
+		
 		customer.setAddress(customerDto.getAddress());
 		customer.setName(customerDto.getName());
+		customer.setEmail(customerDto.getEmail());
 		res.setStatusCode(HttpStatus.OK.value());
 		res.setMessage("Record Updated");
 		res.setData(customerRepository.save(customer));

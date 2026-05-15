@@ -5,9 +5,11 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class CustomerDto {
+public class DeliveryAgentDto {
+	
 	private Integer id;
 	private String name;
-	private String address;
-	private String email;
+	private String vehicleNumber;
+	private Double rating;
+	
 }
