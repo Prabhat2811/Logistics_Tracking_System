@@ -26,5 +26,5 @@ public class Warehouse {
 	private Long contact;
 	
 	 @OneToMany(mappedBy = "warehouse", cascade = CascadeType.ALL)
-	    private List<Shipment> shipments;
+	 private List<Shipment> shipments;
 }
